@@ -9,50 +9,15 @@ struct Visitados {
     int posJ;
 };
 
-int main() {
-
-    int vertices = 0;
-    bool dirigido = false;
-
-    cout << "Entre com o número de vértices: "; cin >> vertices; cout << "endl";
-    cout << "Grafo não dirigido - 0; Grafo dirigido - 1: "; cin >> dirigido; cout << endl;
-
-    //01 // 02 // 23 // 13 // -10
-    int matriz[vertices][vertices];
-    for(int i = 0; i < vertices; i++) {
-        for(int j = 0; j < vertices; j++) {
-            matriz[i][j] = 0;
-        }
+void imprime_matriz(int** matriz, int vertices){
+    int cont=0;
+    cout<<"  ";
+    for(int i = 0; i < vertices; i++){
+        cout<<(i+1)<<"   ";
     }
-
-    bool seletor = true;
-    int cont = 1;
-    cout << "Digite as conexões, cada número seguido de um ENTER." << endl;
-    cout << "Digite um valor negativo para parar." << endl;
-    int val1=0, val2=0;
-    while(seletor) {
-        if(val1 < 0 || val2 < 0) {
-            break;
-        }
-
-        cout << "Conexão " << cont << ": ";
-        cin >> val1; cin >> val2; cout << endl;
-
-        if(dirigido) {
-            matriz[val1][val2] = 1;
-            cont++;
-            continue;
-        }
-
-        matriz[val1][val2] = 1;
-        matriz[val2][val1] = 1;
-
-        cont++;
-    }
-
-    stack<int> stack;
-
+    cout<<endl;
     for(int i = 0; i < vertices; i++) {
+        cout<<(i+1)<<" ";
         for(int j = 0; j < vertices; j++) {
             if(matriz[i][j] != 1) {
                 matriz[i][j] = 0;
@@ -66,6 +31,55 @@ int main() {
             cout << " - ";
         }
     }
+}
+
+int main() {
+
+    int vertices = 0;
+    bool dirigido = false;
+
+    cout << "Entre com o número de vértices: "; cin >> vertices; cout << "endl";
+    cout << "Grafo não dirigido - 0; Grafo dirigido - 1: "; cin >> dirigido; cout << endl;
+
+    //01 // 02 // 23 // 13 // -10
+    int** (matriz) = new int*[vertices];
+    for(int i = 0; i < vertices; i++){
+        matriz[i] = new int[vertices];
+    }
+
+    bool seletor = true;
+    int cont = 1;
+    cout << "Digite as conexões, cada número seguido de um ENTER." << endl;
+    cout << "Digite um valor negativo para parar." << endl;
+    
+    int val1 = 0, val2 = 0;
+    while(seletor) {
+        if(val1 < 0 || val2 < 0) {
+            break;
+        }
+
+        cout << "Conexão " << cont << ": ";
+        cin >> val1; cin >> val2; cout << endl;
+
+        if(val1 < 0 || val2 < 0) {
+            break;
+        }
+
+        if(dirigido) {
+            matriz[val1][val2] = 1;
+            cont++;
+            continue;
+        }
+
+        matriz[val1][val2] = 1;
+        matriz[val2][val1] = 1;
+
+        cont++;
+    }
+
+    imprime_matriz(matriz,vertices);
+
+    stack<int> stack;
 
     seletor = true;
     Visitados visitados[vertices];

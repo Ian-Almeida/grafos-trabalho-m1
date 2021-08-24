@@ -1,4 +1,4 @@
-/home/ianalmeida/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.4746.93/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/ianalmeida/CLionProjects/GRAFOS-trabalho-m1
+/home/snipero/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.4746.93/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/snipero/Desktop/grafos-trabalho-m1-master
 -- The C compiler identification is GNU 9.3.0
 -- The CXX compiler identification is GNU 9.3.0
 -- Detecting C compiler ABI info
@@ -13,4 +13,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/ianalmeida/CLionProjects/GRAFOS-trabalho-m1/cmake-build-debug
+-- Build files have been written to: /home/snipero/Desktop/grafos-trabalho-m1-master/cmake-build-debug

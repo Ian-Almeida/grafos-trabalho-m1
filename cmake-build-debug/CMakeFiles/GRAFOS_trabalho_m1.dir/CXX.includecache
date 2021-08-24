@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ianalmeida/CLionProjects/GRAFOS-trabalho-m1/main.cpp
+/home/snipero/Desktop/grafos-trabalho-m1-master/main.cpp
 iostream
 -
 stack
@@ -14,5 +14,9 @@ stack
 queue
 -
 vector
+-
+Windows.h
+-
+unistd.h
 -
 

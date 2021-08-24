@@ -1,4 +1,4 @@
-# Install script for directory: /home/ianalmeida/CLionProjects/GRAFOS-trabalho-m1
+# Install script for directory: /home/snipero/Desktop/grafos-trabalho-m1-master
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ianalmeida/CLionProjects/GRAFOS-trabalho-m1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/snipero/Desktop/grafos-trabalho-m1-master/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/GRAFOS_trabalho_m1.dir/main.cpp.o -o GRAFOS_trabalho_m1 

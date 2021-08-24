@@ -1,3 +1,0 @@
-/home/snipero/Desktop/grafos-trabalho-m1-master/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/snipero/Desktop/grafos-trabalho-m1-master/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/snipero/Desktop/grafos-trabalho-m1-master/cmake-build-debug/CMakeFiles/GRAFOS_trabalho_m1.dir

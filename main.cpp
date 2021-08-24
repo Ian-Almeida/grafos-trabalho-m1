@@ -18,11 +18,11 @@ void imprime_matriz(int** matriz, int vertices){
     int cont=0;
     cout<<"  ";
     for(int i = 0; i < vertices; i++){
-        cout<<(i+1)<<"   ";
+        cout<<(i)<<"   ";
     }
     cout<<endl;
     for(int i = 0; i < vertices; i++) {
-        cout<<(i+1)<<" ";
+        cout<<(i)<<" ";
         for(int j = 0; j < vertices; j++) {
             if(matriz[i][j] != 1) {
                 matriz[i][j] = 0;
@@ -44,6 +44,28 @@ void dfs(int** matriz, int vertices, int i, int visitados[]){
     for(int j=0; j<vertices; j++){
         if(!visitados[j]&&matriz[i][j]==1){
             dfs(matriz, vertices, j, visitados);
+        }
+    }
+}
+
+void bfs(int** matriz, int vertices, int i){
+    int visitados[vertices];
+    for(int j=0; j<vertices; j++){
+        visitados[j]=0;
+    }
+    queue<int> q;
+    visitados[i] = 1;
+    q.push(i);
+
+    while(!q.empty()){
+        i=q.front();
+        q.pop();
+        cout << "visitou: " << i << "\n";
+        for(int j = 0; j<vertices; j++){
+            if(matriz[i][j]==1 && (visitados[j]!=1)){
+                q.push(j);
+                visitados[j]=1;
+            }
         }
     }
 }
@@ -105,9 +127,15 @@ void menu(int** matriz, int vertices){
                         for(int i=0; i<vertices; i++){
                             visitados[i]=0;
                         }
-                        dfs(matriz, vertices, 0, visitados);
+                        for(int i = 0; i<vertices; i++){
+                            if(visitados[i]!=1){
+                                dfs(matriz, vertices, i, visitados);
+                            }
+                        }
                         break;
                     case 3:
+
+                        bfs(matriz, vertices, 0);
                         break;
                 }
             }

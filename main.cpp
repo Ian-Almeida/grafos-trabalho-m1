@@ -38,7 +38,7 @@ void imprime_matriz(int** matriz, int vertices){
     }
 }
 
-void dfs(int** matriz, int vertices, int i, int visitados[]){
+int dfs(int** matriz, int vertices, int i, int visitados[]){
     visitados[i]=1;
     cout << "visitou: " << i+1 << "\n";
     for(int j=0; j<vertices; j++){
@@ -105,7 +105,11 @@ void menu(int** matriz, int vertices){
                         for(int i=0; i<vertices; i++){
                             visitados[i]=0;
                         }
-                        dfs(matriz, vertices, 0, visitados);
+                        for(int i = 0; i<vertices; i++){
+                            if(visitados[i]!=1){
+                                dfs(matriz, vertices, i, visitados);
+                            }
+                        }
                         break;
                     case 3:
                         break;

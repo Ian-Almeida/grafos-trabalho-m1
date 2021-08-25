@@ -103,6 +103,63 @@ int** montar_matriz(int** matriz, bool dirigido){
     return matriz;
 }
 
+int** transfere_matriz(int** matriz, int tam1, int tam2){
+    int** (matriznew) = new int*[tam2];
+    for(int i = 0; i < tam2; i++){
+        matriznew[i] = new int[tam2];
+    }
+
+    for(int i=0; i<tam2; i++){
+        for(int j=0; j<tam2; j++){
+            if(tam2 > tam1){
+                if(i>=tam1 or j>=tam1){
+                    matriznew[i][j] = 0;
+                } else {
+                    matriznew[i][j] = matriz[i][j];
+                }
+            }else {
+                matriznew[i][j] = matriz[i][j];
+            }
+        }
+    }
+    return matriznew;
+}
+
+int** insere_vertice(int** matriz, int &vertices){
+    vertices++;
+    int** (new_matriz) = new int*[vertices];
+    for(int i = 0; i < vertices; i++){
+        new_matriz[i] = new int[vertices];
+    }
+    for(int i = 0; i < vertices-1; i++){
+        for(int j = 0; j < vertices-1; j++){
+            new_matriz[i][j]=matriz[i][j];
+        }
+    }
+    return new_matriz;
+}
+
+void remove_vertice(int** matriz, int &vertices, int alvo){
+    if(alvo < vertices-1){
+        for(int i=alvo; i<vertices-1; i++){
+            for(int j=0; j< vertices; j++){
+                matriz[i][j]=matriz[i+1][j];
+            }
+        }
+        for(int i=alvo; i<vertices-1; i++){
+            for(int j=0; j< vertices; j++){
+
+                matriz[j][i]=matriz[j][i+1];
+            }
+        }
+        matriz = transfere_matriz(matriz, vertices, vertices-1);
+        vertices--;
+    } else {
+        matriz = transfere_matriz(matriz, vertices, vertices-1);
+        vertices--;
+    }
+}
+
 void menu(int** matriz, int vertices, bool dirigido){
     int j = 0;
     int i = 0;
@@ -117,6 +174,8 @@ void menu(int** matriz, int vertices, bool dirigido){
         cout << "bfs(3)" << endl;
         cout << "incluir arestas/arcos(4)" << endl;
         cout << "excluir arestas/arcos(5)" << endl;
+        cout << "incluir vertices(6)" << endl;
+        cout << "excluir vertices(7)" << endl;
         cout << "sair(0)" << endl;
         cout << "-----------------------------" << endl;
         cout << endl << endl;
@@ -162,6 +221,12 @@ void menu(int** matriz, int vertices, bool dirigido){
                         cout << endl << endl;
                         break;
                     case 6:
+                        matriz = insere_vertice(matriz,vertices);
+                        break;
+                    case 7:
+                        cout << "digite qual vertice deseja excluir: ";
+                        cin >> i;
+                        remove_vertice(matriz, vertices, i);
                         break;
                 }
             }

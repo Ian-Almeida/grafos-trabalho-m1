@@ -103,8 +103,10 @@ int** montar_matriz(int** matriz, bool dirigido){
     return matriz;
 }
 
-void menu(int** matriz, int vertices){
-
+void menu(int** matriz, int vertices, bool dirigido){
+    int j = 0;
+    int i = 0;
+    int x = 0, y=0;
     int escolha=1;
     int visitados[vertices];
     while(escolha!=0){
@@ -113,6 +115,8 @@ void menu(int** matriz, int vertices){
         cout << "imprimir(1)" << endl;
         cout << "dfs(2)" << endl;
         cout << "bfs(3)" << endl;
+        cout << "incluir arestas/arcos(4)" << endl;
+        cout << "excluir arestas/arcos(5)" << endl;
         cout << "sair(0)" << endl;
         cout << "-----------------------------" << endl;
         cout << endl << endl;
@@ -127,6 +131,9 @@ void menu(int** matriz, int vertices){
                         for(int i=0; i<vertices; i++){
                             visitados[i]=0;
                         }
+                        cout << "digite o ponto inicial da pesquisa: ";
+                        cin >> j;
+                        dfs(matriz, vertices, j, visitados);
                         for(int i = 0; i<vertices; i++){
                             if(visitados[i]!=1){
                                 dfs(matriz, vertices, i, visitados);
@@ -135,7 +142,26 @@ void menu(int** matriz, int vertices){
                         break;
                     case 3:
 
-                        bfs(matriz, vertices, 0);
+                        cout << "digite o ponto inicial da pesquisa: ";
+                        cin >> i;
+                        bfs(matriz, vertices, i);
+                        break;
+                    case 4:
+                        montar_matriz(matriz, dirigido);
+                        break;
+                    case 5:
+                        cout << "digite a aresta que deseja excluir: ";
+                        cin >> x;
+                        cin >> y;
+                        if(dirigido){
+                            matriz[x][y]=0;
+                        }else{
+                            matriz[y][x]=0;
+                            matriz[x][y]=0;
+                        }
+                        cout << endl << endl;
+                        break;
+                    case 6:
                         break;
                 }
             }
@@ -161,7 +187,7 @@ int main() {
 
     matriz = montar_matriz(matriz, dirigido);
 
-    menu(matriz, vertices);
+    menu(matriz, vertices, dirigido);
 
 
     return 0;
